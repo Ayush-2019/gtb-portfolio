@@ -9,71 +9,383 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-    <style>
-
+<style>
         :root {
-        --primary-color: #6366f1;
-        --secondary-color: #8b5cf6;
-        --dark-bg: #0f172a;
-        --light-bg: #1e293b;
-        --text-light: #e2e8f0;
-        --text-muted: #94a3b8;
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --dark-bg: #0f172a;
+            --light-bg: #1e293b;
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
         }
 
         * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background: var(--dark-bg);
-        color: var(--text-light);
-        overflow-x: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
         }
 
         /* Navbar */
         .navbar {
-        background: rgba(15, 23, 42, 0.95) !important;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .navbar-brand {
-        font-weight: 700;
-        font-size: 1.5rem;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-link {
-        color: var(--text-light) !important;
-        font-weight: 500;
-        margin: 0 0.5rem;
-        transition: all 0.3s ease;
-        position: relative;
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-link:hover {
-        color: var(--primary-color) !important;
+            color: var(--primary-color) !important;
         }
 
         .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--primary-color);
-        transition: width 0.3s ease;
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover::after {
-        width: 100%;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #intro {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--light-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #intro::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .hero-content .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .typed-subtitle {
+            min-height: 1.8rem;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .typed-subtitle::after {
+            content: '|';
+            color: var(--primary-color);
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Image */
+        .hero-image-container {
+            position: relative;
+            animation: fadeIn 1s ease 0.3s both;
+            flex-shrink: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+            border: 5px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.5);
+            border-color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Experience Cards */
+        .experience-card, .project-card, .cert-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .experience-card:hover, .project-card:hover, .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .card-logo {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+            padding: 10px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .experience-card:hover .card-logo,
+        .project-card:hover .card-logo,
+        .cert-card:hover .card-logo {
+            background: rgba(99, 102, 241, 0.2);
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .experience-card h4, .project-card h4, .cert-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .experience-card .company, .cert-card .issuer {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 576px) {
+            .experience-card, .project-card, .cert-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .card-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* Skills */
+        .skill-category {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .skill-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .skill-category h4 i {
+            font-size: 1.5rem;
+        }
+
+        .skill-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 10px 18px;
+            border-radius: 25px;
+            margin: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-logo {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .skill-item:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
         }
 
         .skill-tag {
@@ -94,398 +406,405 @@
             transform: scale(1.05);
         }
 
-        /* Hero Section */
-        #intro {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        background: linear-gradient(135deg, var(--dark-bg) 0%, var(--light-bg) 100%);
-        position: relative;
-        overflow: hidden;
+        /* Contact Section */
+        #contact {
+            background: var(--light-bg);
         }
 
-        #intro::before {
-        content: '';
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent);
-        border-radius: 50%;
-        top: -250px;
-        right: -250px;
-        animation: float 6s ease-in-out infinite;
+        /* Certification Images Grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 20px 0;
         }
 
-        @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
+        .cert-image-link {
+            display: block;
+            transition: all 0.3s ease;
         }
 
-        .hero-content h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        animation: fadeInUp 1s ease;
+        .cert-image-link img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
         }
 
-        .hero-content-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        }
-
-        .hero-content .gradient-text {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-        font-size: 1.3rem;
-        color: var(--text-muted);
-        margin-bottom: 2rem;
-        animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .typed-subtitle {
-        min-height: 1.8rem;
-        font-size: 1.3rem;
-        color: var(--text-muted);
-        margin-bottom: 2rem;
-        }
-
-        .typed-subtitle::after {
-        content: '|';
-        color: var(--primary-color);
-        animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-        }
-
-        @keyframes fadeInUp {
-        from {
-        opacity: 0;
-        transform: translateY(30px);
-        }
-        to {
-        opacity: 1;
-        transform: translateY(0);
-        }
-        }
-
-        .btn-custom {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        border: none;
-        padding: 12px 30px;
-        font-weight: 600;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .btn-custom:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        /* Hero Image */
-        .hero-image-container {
-        position: relative;
-        animation: fadeIn 1s ease 0.3s both;
-        flex-shrink: 0;
-        }
-
-        @keyframes fadeIn {
-        from {
-        opacity: 0;
-        transform: scale(0.8);
-        }
-        to {
-        opacity: 1;
-        transform: scale(1);
-        }
-        }
-
-        .hero-image {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
-        border: 5px solid rgba(99, 102, 241, 0.3);
-        transition: all 0.3s ease;
-        object-fit: cover;
-        }
-
-        .hero-image:hover {
-        transform: scale(1.05);
-        box-shadow: 0 20px 50px rgba(99, 102, 241, 0.5);
-        border-color: var(--primary-color);
+        .cert-image-link:hover img {
+            transform: scale(1.1);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
         }
 
         @media (max-width: 768px) {
-        .hero-content-wrapper {
-        flex-direction: column;
-        text-align: center;
-        }
+            .cert-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
 
-        .hero-image {
-        width: 150px;
-        height: 150px;
-        }
-
-        .hero-content h1 {
-        font-size: 2.5rem;
-        }
-
-        .hero-content p {
-        font-size: 1.1rem;
-        }
+            .cert-image-link img {
+                width: 120px;
+                height: 120px;
+            }
         }
 
         @media (max-width: 576px) {
-        .hero-image {
-        width: 120px;
-        height: 120px;
-        }
-        }
+            .cert-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
 
-        /* Section Styles */
-        section {
-        padding: 80px 0;
-        }
-
-        .section-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 3rem;
-        text-align: center;
-        position: relative;
-        }
-
-        .section-title::after {
-        content: '';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        border-radius: 2px;
-        }
-
-        /* Experience Cards */
-        .experience-card, .project-card, .cert-card {
-        background: var(--light-bg);
-        border-radius: 15px;
-        padding: 30px;
-        margin-bottom: 30px;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(99, 102, 241, 0.1);
-        display: flex;
-        gap: 20px;
-        align-items: flex-start;
-        }
-
-        .experience-card:hover, .project-card:hover, .cert-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
-        border-color: var(--primary-color);
-        }
-
-        .card-logo {
-            flex-shrink: 0;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* background: rgba(99, 102, 241, 0.1); */
-            border-radius: 25%;
-            padding: 10px;
-            transition: all 0.3s ease;
-            /* overflow: hidden; */
-        }
-
-        .card-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-        }
-
-        .experience-card:hover .card-logo,
-        .project-card:hover .card-logo,
-        .cert-card:hover .card-logo {
-        background: rgba(99, 102, 241, 0.2);
-        transform: scale(1.05);
-        }
-
-        .card-content {
-        flex: 1;
-        }
-
-        .experience-card h4, .project-card h4, .cert-card h4 {
-        color: var(--primary-color);
-        margin-bottom: 10px;
-        }
-
-        .experience-card .company, .cert-card .issuer {
-        color: var(--text-muted);
-        font-style: italic;
-        margin-bottom: 15px;
-        }
-
-        @media (max-width: 576px) {
-        .experience-card, .project-card, .cert-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        }
-
-        .card-logo {
-        width: 60px;
-        height: 60px;
-        }
-        }
-
-        /* Skills */
-        .skill-category {
-        background: var(--light-bg);
-        border-radius: 15px;
-        padding: 30px;
-        margin-bottom: 30px;
-        border: 1px solid rgba(99, 102, 241, 0.1);
-        }
-
-        .skill-category h4 {
-        color: var(--primary-color);
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        }
-
-        .skill-category h4 i {
-        font-size: 1.5rem;
-        }
-
-        .skill-item {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(99, 102, 241, 0.1);
-        color: var(--primary-color);
-        padding: 10px 18px;
-        border-radius: 25px;
-        margin: 5px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        }
-
-        .skill-logo {
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        }
-
-        .skill-logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        }
-
-        .skill-item:hover {
-        background: var(--primary-color);
-        color: white;
-        transform: scale(1.05);
-        }
-
-        /* Contact Section */
-        #contact {
-        background: var(--light-bg);
+            .cert-image-link img {
+                width: 150px;
+                height: 150px;
+            }
         }
 
         .contact-info {
-        background: var(--dark-bg);
-        border-radius: 15px;
-        padding: 30px;
-        border: 1px solid rgba(99, 102, 241, 0.1);
+            background: var(--dark-bg);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
         }
 
         .contact-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         .contact-item i {
-        font-size: 1.5rem;
-        color: var(--primary-color);
-        margin-right: 15px;
-        width: 30px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            width: 30px;
         }
 
         .social-links a {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
-        border-radius: 50%;
-        background: rgba(99, 102, 241, 0.1);
-        color: var(--primary-color);
-        margin: 0 10px;
-        transition: all 0.3s ease;
-        font-size: 1.2rem;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
-        background: var(--primary-color);
-        color: white;
-        transform: translateY(-5px);
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
         }
 
         /* Footer */
         footer {
-        background: var(--dark-bg);
-        padding: 20px 0;
-        text-align: center;
-        color: var(--text-muted);
-        border-top: 1px solid rgba(99, 102, 241, 0.1);
+            background: var(--dark-bg);
+            padding: 20px 0;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-        .hero-content h1 {
-        font-size: 2.5rem;
-        }
-        .hero-content p {
-        font-size: 1.1rem;
-        }
-        .section-title {
-        font-size: 2rem;
-        }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
         }
 
         /* Scroll Animation */
         .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
         .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
+            opacity: 1;
+            transform: translateY(0);
         }
 
+        /* Education Slider Section */
+        .education-slider-wrapper {
+            position: relative;
+            padding: 0 70px 60px 70px;
+        }
+
+        .education-slides-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .education-item {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .education-item.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .education-box {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 50px;
+            background: var(--light-bg);
+            border-radius: 20px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .education-box:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .education-image {
+            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 3px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .education-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .education-text h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .education-text h4 {
+            color: var(--text-light);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .education-text .year {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .education-text .description {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Navigation Arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .nav-arrow:hover {
+            background: var(--secondary-color);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .prev-arrow {
+            left: 10px;
+        }
+
+        .next-arrow {
+            right: 10px;
+        }
+
+        /* Navigation Dots */
+        .navigation-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .nav-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.4);
+        }
+
+        .nav-dot:hover {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Responsive Education */
+        @media (max-width: 992px) {
+            .education-slider-wrapper {
+                padding: 0 60px 50px 60px;
+            }
+
+            .education-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px;
+            }
+
+            .education-image {
+                width: 130px;
+                height: 130px;
+            }
+
+            .education-text h3 {
+                font-size: 1.7rem;
+            }
+
+            .education-text h4 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .education-slider-wrapper {
+                padding: 0 55px 45px 55px;
+            }
+
+            .education-box {
+                padding: 35px 30px;
+            }
+
+            .education-image {
+                width: 110px;
+                height: 110px;
+            }
+
+            .nav-arrow {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .education-slider-wrapper {
+                padding: 0 50px 40px 50px;
+            }
+
+            .education-box {
+                padding: 30px 25px;
+            }
+
+            .education-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .education-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .education-text h4 {
+                font-size: 1.1rem;
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .prev-arrow {
+                left: 5px;
+            }
+
+            .next-arrow {
+                right: 5px;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -605,6 +924,66 @@ integrity and smooth integration across services
 </li>
 <li>Created 10+ unit tests using JUnit and Mockito, achieving 90%+ code coverage, reducing future-deployment bugs</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="education-slider-wrapper">
+                        <div class="education-slides-container" id="educationContainer">
+                            <!-- Education 1 -->
+                            <div class="education-item active">
+                                <div class="education-box">
+                                    <div class="education-image">
+                                        <img src="https://via.placeholder.com/150/6366f1/ffffff?text=NEU" alt="Northeastern University">
+                                        <!-- Replace: <img src="images/neu-logo.png" alt="Northeastern University"> -->
+                                    </div>
+                                    <div class="education-text">
+                                        <h3>Northeastern University</h3>
+                                        <h4>Master of Science in Computer Science</h4>
+                                        <p class="year">2023 - 2025</p>
+                                        <p class="description">Specializing in algorithms, data structures, and software engineering with focus on competitive programming and system design.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Education 2 -->
+                            <div class="education-item">
+                                <div class="education-box">
+                                    <div class="education-image">
+                                        <img src="https://via.placeholder.com/150/8b5cf6/ffffff?text=UNI" alt="Your University">
+                                        <!-- Replace: <img src="images/undergrad-logo.png" alt="Your University"> -->
+                                    </div>
+                                    <div class="education-text">
+                                        <h3>Your Undergraduate University</h3>
+                                        <h4>Bachelor of Technology in Computer Science</h4>
+                                        <p class="year">2019 - 2023</p>
+                                        <p class="description">Built strong foundation in programming, algorithms, and software development with academic honors and research experience.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button class="nav-arrow prev-arrow" id="eduPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="nav-arrow next-arrow" id="eduNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <!-- Dots Navigation -->
+                        <div class="navigation-dots">
+                            <span class="nav-dot active" data-index="0"></span>
+                            <span class="nav-dot" data-index="1"></span>
                         </div>
                     </div>
                 </div>
@@ -925,43 +1304,36 @@ integrity and smooth integration across services
     </section>
 
     <!-- Certifications Section -->
-    <section id="certifications">
+<section id="certifications">
         <div class="container">
             <h2 class="section-title fade-in">Certifications</h2>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="cert-card fade-in">
-                        <div class="card-logo">
-                            <img src="https://via.placeholder.com/80x80/6366f1/ffffff?text=DSA" alt="DSA Certification Logo">
-                            <!-- Replace with: <img src="path/to/dsa-cert-logo.png" alt="DSA Certification Logo"> -->
-                        </div>
-                        <div class="card-content">
-                            <h4><i class="fas fa-certificate"></i> Data Structures & Algorithms Specialization</h4>
-                            <p class="issuer">Online Learning Platform</p>
-                            <p>Comprehensive coverage of fundamental and advanced algorithms with practical implementations.</p>
-                        </div>
-                    </div>
-                    <div class="cert-card fade-in">
-                        <div class="card-logo">
-                            <img src="https://via.placeholder.com/80x80/8b5cf6/ffffff?text=JAVA" alt="Java Certification Logo">
-                            <!-- Replace with: <img src="path/to/java-cert-logo.png" alt="Java Certification Logo"> -->
-                        </div>
-                        <div class="card-content">
-                            <h4><i class="fas fa-certificate"></i> Java Programming Masterclass</h4>
-                            <p class="issuer">Online Learning Platform</p>
-                            <p>Advanced Java programming concepts including OOP, collections, and design patterns.</p>
-                        </div>
-                    </div>
-                    <div class="cert-card fade-in">
-                        <div class="card-logo">
-                            <img src="https://via.placeholder.com/80x80/6366f1/ffffff?text=PY" alt="Python Certification Logo">
-                            <!-- Replace with: <img src="path/to/python-cert-logo.png" alt="Python Certification Logo"> -->
-                        </div>
-                        <div class="card-content">
-                            <h4><i class="fas fa-certificate"></i> Python for Data Science</h4>
-                            <p class="issuer">Online Learning Platform</p>
-                            <p>Python programming with focus on data analysis, visualization, and scientific computing.</p>
-                        </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="cert-grid">
+                        <a href="https://www.coursera.org/account/accomplishments/verify/8DFZHSAJV6MR?utm_source=mobile&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" class="cert-image-link fade-in" target="_blank" rel="noopener noreferrer">
+                            <img src="./c1.JPG" alt="Certification 1">
+                            <!-- Replace with: <img src="images/cert1.png" alt="Certification Name"> -->
+                        </a>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/498SRTYAYLP3?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse" class="cert-image-link fade-in" target="_blank" rel="noopener noreferrer">
+                            <img src="./c2.JPG" alt="Certification 2">
+                            <!-- Replace with: <img src="images/cert2.png" alt="Certification Name"> -->
+                        </a>
+                        <a href="https://coursera.org/share/0899dd46c50581d38d66a26ff52f2f7f" class="cert-image-link fade-in" target="_blank" rel="noopener noreferrer">
+                            <img src="./c3.JPG" alt="Certification 3">
+                            <!-- Replace with: <img src="images/cert3.png" alt="Certification Name"> -->
+                        </a>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/L223Q58K6MUR?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse" class="cert-image-link fade-in" target="_blank" rel="noopener noreferrer">
+                            <img src="./c4.JPG" alt="Certification 4">
+                            <!-- Replace with: <img src="images/cert4.png" alt="Certification Name"> -->
+                        </a>
+                        <a href="https://drive.google.com/file/d/10rSfsfeOWJHjt5z9eEhPRSy9GFcTbQnS/view?usp=sharing" class="cert-image-link fade-in" target="_blank" rel="noopener noreferrer">
+                            <img src="./c5.JPG" alt="Certification 5">
+                            <!-- Replace with: <img src="images/cert5.png" alt="Certification Name"> -->
+                        </a>
+                        <a href="https://coursera.org/verify/HTLCXXPJR34F" class="cert-image-link fade-in" target="_blank" rel="noopener noreferrer">
+                            <img src="./c6.JPG" alt="Certification 6">
+                            <!-- Replace with: <img src="images/cert6.png" alt="Certification Name"> -->
+                        </a>
                     </div>
                 </div>
             </div>
@@ -978,24 +1350,31 @@ integrity and smooth integration across services
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <h5>Email</h5>
-                                <p>ayush@northeastern.edu</p>
+                                <h5>Email 1 (Personal)</h5>
+                                <p>ayushkiledar10@gmail.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email 2 (Education)</h5>
+                                <p>kiledar.ay@northeastern.edu</p>
+                            </div>
+                        </div>
+                        <!-- <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h5>Location</h5>
                                 <p>Boston, Massachusetts, US</p>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="text-center mt-4">
                             <h5 class="mb-3">Connect With Me</h5>
                             <div class="social-links">
-                                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                                <a href="#" title="LeetCode"><i class="fas fa-code"></i></a>
-                                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="https://www.linkedin.com/in/ayush-kiledar-308919196" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Ayush-2019/" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://leetcode.com/u/AyushK5/" title="LeetCode"><i class="fas fa-code"></i></a>
+                                <a href="mailto:ayushkiledar10@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1094,6 +1473,58 @@ integrity and smooth integration across services
                 navbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
             }
         });
+
+        // ========== EDUCATION SLIDER ==========
+let currentEduIndex = 0;
+const educationItems = document.querySelectorAll('.education-item');
+const navDots = document.querySelectorAll('.nav-dot');
+const totalEducation = educationItems.length;
+
+function showEducation(index) {
+    // Hide all education items
+    educationItems.forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Remove active from all dots
+    navDots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+
+    // Show the selected education
+    educationItems[index].classList.add('active');
+    navDots[index].classList.add('active');
+
+    currentEduIndex = index;
+}
+
+// Previous button
+document.getElementById('eduPrev').addEventListener('click', function() {
+    let newIndex = currentEduIndex - 1;
+    if (newIndex < 0) {
+        newIndex = totalEducation - 1;
+    }
+    showEducation(newIndex);
+});
+
+// Next button
+document.getElementById('eduNext').addEventListener('click', function() {
+    let newIndex = currentEduIndex + 1;
+    if (newIndex >= totalEducation) {
+        newIndex = 0;
+    }
+    showEducation(newIndex);
+});
+
+// Dot navigation
+navDots.forEach((dot, index) => {
+    dot.addEventListener('click', function() {
+        showEducation(index);
+    });
+});
+
+// Initialize first slide
+showEducation(0);
     </script>
 </body>
 </html>
