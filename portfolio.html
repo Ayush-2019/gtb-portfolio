@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush Kiledar - Portfolio</title>
+    <!-- <link rel="stylesheet" href="/styles.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        :root {
+        --primary-color: #6366f1;
+        --secondary-color: #8b5cf6;
+        --dark-bg: #0f172a;
+        --light-bg: #1e293b;
+        --text-light: #e2e8f0;
+        --text-muted: #94a3b8;
+        }
+
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: var(--dark-bg);
+        color: var(--text-light);
+        overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+        background: rgba(15, 23, 42, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+        color: var(--text-light) !important;
+        font-weight: 500;
+        margin: 0 0.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        }
+
+        .nav-link:hover {
+        color: var(--primary-color) !important;
+        }
+
+        .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+        width: 100%;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        #intro {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, var(--dark-bg) 0%, var(--light-bg) 100%);
+        position: relative;
+        overflow: hidden;
+        }
+
+        #intro::before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent);
+        border-radius: 50%;
+        top: -250px;
+        right: -250px;
+        animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        }
+
+        .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        animation: fadeInUp 1s ease;
+        }
+
+        .hero-content-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        }
+
+        .hero-content .gradient-text {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+        font-size: 1.3rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .typed-subtitle {
+        min-height: 1.8rem;
+        font-size: 1.3rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        }
+
+        .typed-subtitle::after {
+        content: '|';
+        color: var(--primary-color);
+        animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+        }
+
+        @keyframes fadeInUp {
+        from {
+        opacity: 0;
+        transform: translateY(30px);
+        }
+        to {
+        opacity: 1;
+        transform: translateY(0);
+        }
+        }
+
+        .btn-custom {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border: none;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn-custom:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Image */
+        .hero-image-container {
+        position: relative;
+        animation: fadeIn 1s ease 0.3s both;
+        flex-shrink: 0;
+        }
+
+        @keyframes fadeIn {
+        from {
+        opacity: 0;
+        transform: scale(0.8);
+        }
+        to {
+        opacity: 1;
+        transform: scale(1);
+        }
+        }
+
+        .hero-image {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        border: 5px solid rgba(99, 102, 241, 0.3);
+        transition: all 0.3s ease;
+        object-fit: cover;
+        }
+
+        .hero-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 50px rgba(99, 102, 241, 0.5);
+        border-color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+        .hero-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        }
+
+        .hero-image {
+        width: 150px;
+        height: 150px;
+        }
+
+        .hero-content h1 {
+        font-size: 2.5rem;
+        }
+
+        .hero-content p {
+        font-size: 1.1rem;
+        }
+        }
+
+        @media (max-width: 576px) {
+        .hero-image {
+        width: 120px;
+        height: 120px;
+        }
+        }
+
+        /* Section Styles */
+        section {
+        padding: 80px 0;
+        }
+
+        .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+        }
+
+        .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 2px;
+        }
+
+        /* Experience Cards */
+        .experience-card, .project-card, .cert-card {
+        background: var(--light-bg);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        }
+
+        .experience-card:hover, .project-card:hover, .cert-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+        border-color: var(--primary-color);
+        }
+
+        .card-logo {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* background: rgba(99, 102, 241, 0.1); */
+            border-radius: 25%;
+            padding: 10px;
+            transition: all 0.3s ease;
+            /* overflow: hidden; */
+        }
+
+        .card-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .experience-card:hover .card-logo,
+        .project-card:hover .card-logo,
+        .cert-card:hover .card-logo {
+        background: rgba(99, 102, 241, 0.2);
+        transform: scale(1.05);
+        }
+
+        .card-content {
+        flex: 1;
+        }
+
+        .experience-card h4, .project-card h4, .cert-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        }
+
+        .experience-card .company, .cert-card .issuer {
+        color: var(--text-muted);
+        font-style: italic;
+        margin-bottom: 15px;
+        }
+
+        @media (max-width: 576px) {
+        .experience-card, .project-card, .cert-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        }
+
+        .card-logo {
+        width: 60px;
+        height: 60px;
+        }
+        }
+
+        /* Skills */
+        .skill-category {
+        background: var(--light-bg);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .skill-category h4 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        }
+
+        .skill-category h4 i {
+        font-size: 1.5rem;
+        }
+
+        .skill-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary-color);
+        padding: 10px 18px;
+        border-radius: 25px;
+        margin: 5px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        }
+
+        .skill-logo {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .skill-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        }
+
+        .skill-item:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        #contact {
+        background: var(--light-bg);
+        }
+
+        .contact-info {
+        background: var(--dark-bg);
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        }
+
+        .contact-item i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-right: 15px;
+        width: 30px;
+        }
+
+        .social-links a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary-color);
+        margin: 0 10px;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+        background: var(--dark-bg);
+        padding: 20px 0;
+        text-align: center;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+        .hero-content h1 {
+        font-size: 2.5rem;
+        }
+        .hero-content p {
+        font-size: 1.1rem;
+        }
+        .section-title {
+        font-size: 2rem;
+        }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#intro">Ayush Kiledar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#intro">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10">
+                    <div class="hero-content-wrapper">
+                        <div class="hero-image-container">
+                            <img src="./ayush.jpg" alt="Ayush Profile" class="hero-image">
+                            <!-- Replace with: <img src="images/profile-photo.jpg" alt="Ayush Profile" class="hero-image"> -->
+                        </div>
+                        <div class="hero-content">
+                            <h1>Hi, I'm <span class="gradient-text">Ayush Kiledar</span></h1>
+                            <p id="typed-text" class="typed-subtitle"></p>
+                            <p class="lead">Passionate about creating efficient Software and AI solutions, exploring the depths of Full Stack development, LLM engineering and cloud technologies.</p>
+                            <a href="#contact" class="btn btn-custom btn-lg">Get In Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Experience</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="experience-card fade-in">
+                        <div class="card-logo">
+                            <img src="./deepthink.JPG" alt="DTH logo">
+                            <!-- Replace with: <img src="path/to/northeastern-logo.png" alt="Northeastern University Logo"> -->
+                        </div>
+                        <div class="card-content">
+                            <h4>Software Engineer</h4>
+                            <p class="company">DeepThink Health</p>
+                            <ul>
+                                
+                            <li>Developed and deployed 11 RESTful APIs with Java Spring Boot in an Agile-Scrum SDLC powering a healthcare
+analytics platform, improving query throughput by 15% and cutting latency on high-traffic endpoints</li>
+                            <li>Delivered client-facing features in React with Redux, refactoring 10+ components for maintainable state
+management and cleaner codebase</li>
+                            <li>Designed microservices architecture and containerized with Docker; scaled services across Kubernetes clusters to
+handle 60% higher peak load with no downtime in a service-orienteds architecture (SOA)</li>
+                            <li>Fine-Tuned Transformer Models for medical bill sheets, using AI/LLM fine-tuning techniques with PyTorch and
+Hugging Face, reducing convergence time and improving accuracy on downstream text classification tasks by 25%</li>
+                            <li>Built and deployed an LLM-powered price prediction model for medical products, reaching 95% accuracy and
+supporting strategic procurement decisions</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="experience-card fade-in">
+                        <div class="card-logo">
+                            <img src="./neu.JPG" alt="NEU Logo">
+                            <!-- Replace with: <img src="path/to/research-logo.png" alt="Algorithm Research Logo"> -->
+                        </div>
+                        <div class="card-content">
+                            <h4>Software Engineer</h4>
+                            <p class="company">Northeastern University</p>
+                            <ul>
+                                <li>Automated provisioning of 15+ AWS services (EC2, RDS, IAM, S3, SQS, etc.) with Terraform, and streamlined
+Jenkins CI/CD pipelines, accelerating release cycles and cutting environment setup time from hours to 20 minutes
+</li>
+<li>Architected a modular Angular frontend with 30+ reusable components, and enforced access security via 5+
+role-based route guards over Typescript, boosting maintainability and UI security by 35%
+</li>
+<li>Implemented real-time Kafka streaming pipelines for high-volume event ingestion, enabling sub-second analytics
+and downstream alerting with 99.9% reliability
+</li>
+<li>Re-architected APIs to GraphQL, reducing payload size by 30% and improving client-side efficiency for
+high-frequency queries</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="experience-card fade-in">
+                        <div class="card-logo">
+                            <img src="./broomling.JPG" alt="broomling Logo">
+                            <!-- Replace with: <img src="path/to/research-logo.png" alt="Algorithm Research Logo"> -->
+                        </div>
+                        <div class="card-content">
+                            <h4>Software development Engineer</h4>
+                            <p class="company">Broomling Technologies</p>
+                            <ul>
+                                <li>Spearheaded the development of a React-based dashboard with 10+ reusable components and OAuth based login,
+cutting rendering overhead by 20% and improving engagement that contributed to $84K in new revenue
+</li>
+<li>Collaborated with QA/DevOps teams for code reviews of staging defects, cutting release-blocking issues by 40%
+</li>
+<li>Developed 9 PostgreSQL-backed REST APIs with Node.js to support 3 internal SaaS products, ensuring data
+integrity and smooth integration across services
+</li>
+<li>Built a Spring Boot based booking system handling 1M+ records, sustaining an average response time of 200ms
+</li>
+<li>Created 10+ unit tests using JUnit and Mockito, achieving 90%+ code coverage, reducing future-deployment bugs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="project-card fade-in">
+                        <div class="card-logo">
+                            <img src="./react.png" alt="Algorithm Visualizer Logo">
+                            <!-- Replace with: <img src="path/to/algo-visualizer-logo.png" alt="Algorithm Visualizer Logo"> -->
+                        </div>
+                        <div class="card-content">
+                            <h4><b>Tunes-The e-commerce application</b> <a href="https://github.com/Ayush-2019/TUNES_THE_E-COMMERCE_WEBSITE"><img src="./link.png" alt="link" width="20px" height="20px"></a></h4>
+                            <ul>
+
+                                <li>Robust e-commerce application</li>
+                                <li>Comprising 6+ REST APIs and 11 data filters</li>
+                                <li>React Redux for State Management and Auth Guards for Secure APIs</li>
+                            
+                            </ul>
+                            <div class="mt-3">
+                                <span class="skill-tag">ReactJS(Front-end)</span>
+                                <span class="skill-tag">NodeJS(Back-end)</span>
+                                <span class="skill-tag">MongoDB(Database)</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                        <div class="project-card fade-in">
+                            <div class="card-logo">
+                                <img src="./spring.png" alt="Algorithm Visualizer Logo">
+                                <!-- Replace with: <img src="path/to/algo-visualizer-logo.png" alt="Algorithm Visualizer Logo"> -->
+                            </div>
+                            <div class="card-content">
+                                <h4><b>Quiz-O-Mania-The Quiz Conducting Portal</b> <a href="https://github.com/Ayush-2019/QUIZ-O-MANIA_THE-QUIZ-CONDUCTING-PORTAL"><img src="./link.png" alt="link" width="20px" height="20px"></a></h4>
+                                <ul>
+
+                                    <li>Robust e-commerce application</li>
+                                    <li>Comprising 6+ REST APIs and 11 data filters</li>
+                                    <li>React Redux for State Management and Auth Guards for Secure APIs</li>
+                                
+                                </ul>
+                                <div class="mt-3">
+                                    <span class="skill-tag">Angular(Front-end)</span>
+                                    <span class="skill-tag">Java(Back-end)</span>
+                                    <span class="skill-tag">Spring Boot(Back-end)</span>
+                                    <span class="skill-tag">MySQL(Database)</span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="project-card fade-in">
+                    <div class="card-logo">
+                    <img src="./python.png" alt="Algorithm Visualizer Logo">
+                    <!-- Replace with: <img src="path/to/algo-visualizer-logo.png" alt="Algorithm Visualizer Logo"> -->
+                    </div>
+                    <div class="card-content">
+                    <h4><b>Post Book-Social Media Application</b> <a href="https://github.com/Ayush-2019/Post-Book-Social-Media-App-Django"><img src="./link.png" alt="link" width="20px" height="20px"></a></h4>
+                    <ul>
+
+                        <li>Robust e-commerce application</li>
+                        <li>Comprising 6+ REST APIs and 11 data filters</li>
+                        <li>React Redux for State Management and Auth Guards for Secure APIs</li>
+
+                    </ul>
+                    <div class="mt-3">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Django</span>
+ 
+                    </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="project-card fade-in">
+                    <div class="card-logo">
+                    <img src="./firebase.png" alt="Algorithm Visualizer Logo">
+                    <!-- Replace with: <img src="path/to/algo-visualizer-logo.png" alt="Algorithm Visualizer Logo"> -->
+                    </div>
+                    <div class="card-content">
+                    <h4><b>Sports Team Application</b> <a href="https://github.com/Ayush-2019/SPORTS-TEAM-WEBSITE_REACTJS_FIREBASE"><img src="./link.png" alt="link" width="20px" height="20px"></a></h4>
+                    <ul>
+
+                        <li>Robust e-commerce application</li>
+                        <li>Comprising 6+ REST APIs and 11 data filters</li>
+                        <li>React Redux for State Management and Auth Guards for Secure APIs</li>
+
+                    </ul>
+                    <div class="mt-3">
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">ReactJS</span>
+ 
+                    </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="project-card fade-in">
+                    <div class="card-logo">
+                    <img src="./graphql.png" alt="Algorithm Visualizer Logo">
+                    <!-- Replace with: <img src="path/to/algo-visualizer-logo.png" alt="Algorithm Visualizer Logo"> -->
+                    </div>
+                    <div class="card-content">
+                    <h4><b>Event Booking Application</b> <a href="https://github.com/Ayush-2019/EVENT-BOOKING-APP-GRAPHQL"><img src="./link.png" alt="link" width="20px" height="20px"></a></h4>
+                    <ul>
+
+                        <li>Robust e-commerce application</li>
+                        <li>Comprising 6+ REST APIs and 11 data filters</li>
+                        <li>React Redux for State Management and Auth Guards for Secure APIs</li>
+
+                    </ul>
+                    <div class="mt-3">
+                        <span class="skill-tag">GraphQL(Backend)</span>
+                        <span class="skill-tag">ReactJS(Frontend)</span>
+ 
+                    </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="project-card fade-in">
+                    <div class="card-logo">
+                    <img src="./cloud.png" alt="Algorithm Visualizer Logo">
+                    <!-- Replace with: <img src="path/to/algo-visualizer-logo.png" alt="Algorithm Visualizer Logo"> -->
+                    </div>
+                    <div class="card-content">
+                    <h4><b>Cloud Infra for Web Services</b> <a href="https://github.com/Ayush-2019/tf-gcp-infra-fork"><img src="./link.png" alt="link" width="20px" height="20px"></a></h4>
+                    <ul>
+
+                        <li>Robust e-commerce application</li>
+                        <li>Comprising 6+ REST APIs and 11 data filters</li>
+                        <li>React Redux for State Management and Auth Guards for Secure APIs</li>
+
+                    </ul>
+                    <div class="mt-3">
+                        <span class="skill-tag">Google Cloud(Platform)</span>
+                        <span class="skill-tag">Terraform(IaC)</span>
+                        <span class="skill-tag">Linux(Scripts)</span>
+                        <span class="skill-tag">GitHub Actions(CI/CD)</span>
+ 
+                    </div>
+                    </div>
+                    </div>
+                </div>                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="skill-category fade-in">
+                        <h4><i class="fas fa-code"></i> Programming Languages</h4>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                            </div>
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                            </div>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                            </div>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML/CSS">
+                            </div>
+                            <span>HTML/CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                            </div>
+                            <span>SQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="skill-category fade-in">
+                        <h4><i class="fas fa-layer-group"></i> Data Structures & Algorithms</h4>
+                        <span class="skill-tag">Dynamic Programming</span>
+                        <span class="skill-tag">Graph Algorithms</span>
+                        <span class="skill-tag">Tree Operations</span>
+                        <span class="skill-tag">Sorting & Searching</span>
+                        <span class="skill-tag">Optimization</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="skill-category fade-in">
+                        <h4><i class="fas fa-tools"></i> Tools & Technologies</h4>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                            </div>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap">
+                            </div>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter">
+                            </div>
+                            <span>Jupyter</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
+                            </div>
+                            <span>VS Code</span>
+                        </div>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="skill-category fade-in">
+                        <h4><i class="fas fa-brain"></i> Core Competencies</h4>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Algorithm Analysis</span>
+                        <span class="skill-tag">Code Optimization</span>
+                        <span class="skill-tag">Debugging</span>
+                        <span class="skill-tag">Technical Documentation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title fade-in">Certifications</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="cert-card fade-in">
+                        <div class="card-logo">
+                            <img src="https://via.placeholder.com/80x80/6366f1/ffffff?text=DSA" alt="DSA Certification Logo">
+                            <!-- Replace with: <img src="path/to/dsa-cert-logo.png" alt="DSA Certification Logo"> -->
+                        </div>
+                        <div class="card-content">
+                            <h4><i class="fas fa-certificate"></i> Data Structures & Algorithms Specialization</h4>
+                            <p class="issuer">Online Learning Platform</p>
+                            <p>Comprehensive coverage of fundamental and advanced algorithms with practical implementations.</p>
+                        </div>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <div class="card-logo">
+                            <img src="https://via.placeholder.com/80x80/8b5cf6/ffffff?text=JAVA" alt="Java Certification Logo">
+                            <!-- Replace with: <img src="path/to/java-cert-logo.png" alt="Java Certification Logo"> -->
+                        </div>
+                        <div class="card-content">
+                            <h4><i class="fas fa-certificate"></i> Java Programming Masterclass</h4>
+                            <p class="issuer">Online Learning Platform</p>
+                            <p>Advanced Java programming concepts including OOP, collections, and design patterns.</p>
+                        </div>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <div class="card-logo">
+                            <img src="https://via.placeholder.com/80x80/6366f1/ffffff?text=PY" alt="Python Certification Logo">
+                            <!-- Replace with: <img src="path/to/python-cert-logo.png" alt="Python Certification Logo"> -->
+                        </div>
+                        <div class="card-content">
+                            <h4><i class="fas fa-certificate"></i> Python for Data Science</h4>
+                            <p class="issuer">Online Learning Platform</p>
+                            <p>Python programming with focus on data analysis, visualization, and scientific computing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-info fade-in">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>ayush@northeastern.edu</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Location</h5>
+                                <p>Boston, Massachusetts, US</p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <h5 class="mb-3">Connect With Me</h5>
+                            <div class="social-links">
+                                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" title="LeetCode"><i class="fas fa-code"></i></a>
+                                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ayush. Built with passion and code.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Typing effect for hero section
+        const typedTextElement = document.getElementById('typed-text');
+        const textArray = [
+            'MS in CSE @ NEU',
+            'Former Software and AI Engineer @ DeepThink Health',
+            'Problem Solver',
+            'Turning Quality Code to Scalable Business Solution'
+        ];
+        let textArrayIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 100;
+        let erasingDelay = 50;
+        let newTextDelay = 2000;
+
+        function type() {
+            const currentText = textArray[textArrayIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                // Pause at end of text
+                isDeleting = true;
+                typingDelay = newTextDelay;
+            } else if (isDeleting && charIndex === 0) {
+                // Move to next text
+                isDeleting = false;
+                textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                typingDelay = 500;
+            } else {
+                typingDelay = isDeleting ? erasingDelay : 100;
+            }
+
+            setTimeout(type, typingDelay);
+        }
+
+        // Start typing effect after a short delay
+        setTimeout(type, 1000);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+            } else {
+                navbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
